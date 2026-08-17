@@ -4,21 +4,19 @@
 #include <iostream>
 #include <mutex>
 #include <ostream>
-#include <windows.h>
 
-bool Inventory::AddItem(std::string name, int amount)
+void Inventory::AddItem(std::string name, int amount)
 {
     if (Item* item = GetItem(name))
     {
         item->m_Amount += amount;
-        return true;
+        return;
     }
 
-    m_Items.push_back(Item(name, amount));
-    return true;    
+    m_Items.push_back(Item(name, amount)); 
 }
 
-bool Inventory::RemoveItem(std::string name, int amount)
+void Inventory::RemoveItem(std::string name, int amount)
 {
     if (Item* item = GetItem(name))
     {
@@ -39,13 +37,8 @@ bool Inventory::RemoveItem(std::string name, int amount)
                 });
 
             m_Items.erase(it);
-            return true;
         }
-        
-        return true;
     }
-    
-    return false;
 }
 
 Item* Inventory::GetItem(std::string name)

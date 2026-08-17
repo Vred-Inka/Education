@@ -1,7 +1,9 @@
-#pragma once
+﻿#pragma once
 
-#include "GameActor.cpp"
+#include <windows.h>
 
+#include "GameActor.h"
+ 
 class Command
 {
 public:
@@ -14,7 +16,7 @@ class EmptyCommand : public Command
 public:
     virtual void Execute(GameActor& actor)
     {
-        std::cout << "Empty command pressed" << endl;
+        std::cout << "Empty command pressed" << std::endl;
     }
 };
 
@@ -48,7 +50,7 @@ public:
     {
         m_Actor->SetX(m_X);
         m_Actor->SetY(m_Y);
-        cout << "New Actor location is " << m_X << ", " << m_Y << endl;
+        std::cout << "New Actor location is " << m_X << ", " << m_Y << std::endl;
     }
     
 private:
@@ -56,3 +58,4 @@ private:
     int m_X {0};
     int m_Y {0};
 };
+

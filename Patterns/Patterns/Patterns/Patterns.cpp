@@ -1,43 +1,37 @@
 #pragma once
 
-#include <iostream>
-#include <windows.h>
+//#include "Algorithms/A_Search.cpp"
 
-#include "Commands/GameActor.cpp"
-#include "Commands/InputHandler.cpp"
-#include "Tasks/AABB.h"
-#include "Tasks/Inventory.h"
-#include "Tasks/Test1.h"
+#include "Algorithms/AABB.h"
+
+#include "DesignPatterns/Command/CommandTest.h"
+
+#include "Tasks/Inventory/InventoryTest.h"
+#include "Tasks/ReverseString.h"
+
+#include "Tools/MemorySizeTest.h"
+
 
 using namespace std;
 
 int main(int argc, char* argv[])
 {
-    TestInventory();
-    Test1 t;
-    t.RevertString();
+    //Algorytms    
+    //int i = aSearch::pathSearchAStar();
+    AABB::Test();
 
-    AABB a(2,1,6,5);
-    AABB b(12,5,18,11);
-    AABB c(5,4,9,8);
-    bool areCollideAB = intersect(a, b);
-    bool areCollideAC = intersect(a, c);
-    bool areCollideCB = intersect(c, b);
+    // Design Patterns
+    //CommandPattern::Test();
     
-    // Command pattern
-    GameActor actor;
-    InputHandler inputHandler;
-    inputHandler.SetSelectedActor(&actor);
+    // Tasks
+    InventoryTest::Test();
+    ReverseString::Test();
 
-    cout << " Press Any Key:" << endl;
-    while(true) {
-        if (Command* command = inputHandler.HandleInput())
-        {
-            command->Execute(actor);
-        }
-        Sleep(100);
-    }
+    //Tools
+    MemorySizeTest::Test();
 
+
+   
     return 0;
 }
  

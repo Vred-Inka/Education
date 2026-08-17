@@ -1,12 +1,10 @@
 ﻿#pragma once
-#include <iomanip>
-#include <iostream>
+
 #include <string>
 
-class Test1
+namespace ReverseString
 {
-public:
-    static void RevertString()
+    void Test()
     {
         std::string s = "s123e";
         std::string s1;
@@ -18,4 +16,5 @@ public:
 
         std::cout << s << " " << s1 << std::endl;
     }
+    
 };

@@ -4,3 +4,5 @@ Modifications : redo undo commands
 
 #### Game Loop
 https://www.gameprogrammingpatterns.com/game-loop.html
+
+#### Design Patterns

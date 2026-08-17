@@ -9,3 +9,10 @@ Patterns/Patterns/Patterns/Patterns.vcxproj
 Patterns/Patterns/Patterns/Patterns.vcxproj.filters
 Patterns/Patterns/Patterns.sln.DotSettings.user
 .vscode/
+*.obj
+*.iobj
+*.tlog
+*.recipe
+*.pdb
+*.ipdb
+*.exe
