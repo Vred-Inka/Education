@@ -22,15 +22,15 @@ class InputHandler
 public:
     InputHandler();
     ~InputHandler();
-    Command* HandleInput();
+    std::unique_ptr<Command> HandleInput();
 
 private:
-    Command* m_Button_X;
-    Command* m_Button_Y;
-    Command* m_Button_A;
-    Command* m_Button_B;
+    Command* m_Button_X{ nullptr };
+    Command* m_Button_Y{ nullptr };
+    Command* m_Button_A{ nullptr };
+    Command* m_Button_B{ nullptr };
 
-    GameActor* m_SelectedActor;
+    GameActor* m_SelectedActor{ nullptr };
 
 public:
     void SetSelectedActor(GameActor* actor) { m_SelectedActor = actor; }

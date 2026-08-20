@@ -16,3 +16,7 @@ Patterns/Patterns/Patterns.sln.DotSettings.user
 *.pdb
 *.ipdb
 *.exe
+Patterns/Patterns/.vs/
+Patterns/Patterns/Patterns/Patterns.vcxproj.user
+Patterns/Patterns/Patterns/x64/Release/Patterns.log
+.vs/slnx.sqlite

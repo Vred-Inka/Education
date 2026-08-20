@@ -18,12 +18,12 @@ InputHandler::~InputHandler()
     delete m_Button_B;
 } 
 
-Command* InputHandler::HandleInput()
+std::unique_ptr<Command> InputHandler::HandleInput()
 {     
-    if (IsPressed(Buttons::BUTTON_X)) return m_Button_X;
-    if (IsPressed(Buttons::BUTTON_Y)) return m_Button_Y;
-    if (IsPressed(Buttons::BUTTON_A)) return m_Button_A;
-    if (IsPressed(Buttons::BUTTON_B)) return m_Button_B;
+    if (IsPressed(Buttons::BUTTON_X)) return std::make_unique<JumpCommand>();
+    if (IsPressed(Buttons::BUTTON_Y)) return std::make_unique<FireCommand>();
+    if (IsPressed(Buttons::BUTTON_A)) return std::make_unique<EmptyCommand>();
+    if (IsPressed(Buttons::BUTTON_B)) return std::make_unique<EmptyCommand>();
 
     //move actions
     if (GameActor* actor = GetSelectedActor())
@@ -31,13 +31,13 @@ Command* InputHandler::HandleInput()
         if (IsPressed(Buttons::BUTTON_UP))
         {
             int destY = actor->GetY() - 1;
-            return new MoveActorCommand(actor, actor->GetX(), destY);
+            return std::make_unique<MoveActorCommand>(actor, actor->GetX(), destY);
         }
         
         if (IsPressed(Buttons::BUTTON_DOWN))
         {
             int destY = actor->GetY() + 1;
-            return new MoveActorCommand(actor, actor->GetX(), destY);
+            return std::make_unique<MoveActorCommand>(actor, actor->GetX(), destY);
         }
     }
     

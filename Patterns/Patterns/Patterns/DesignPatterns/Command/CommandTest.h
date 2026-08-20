@@ -15,9 +15,9 @@ namespace CommandPattern
             
         std::cout << " Press Any Key:" << std::endl;
         while(true) {
-            if (Command* command = inputHandler.HandleInput())
+            if (std::unique_ptr<Command> command = inputHandler.HandleInput())
             {
-                command->Execute(actor);
+                command->Execute();
             }
             Sleep(100);
         }

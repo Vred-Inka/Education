@@ -8,54 +8,101 @@ class Command
 {
 public:
     virtual ~Command() {}
-    virtual void Execute(GameActor& actor) = 0;
+    virtual void Execute() = 0;
+    virtual void Undo() = 0;
 };
 
-class EmptyCommand : public Command
+class ActorCommand : public Command
+{
+private:
+    GameActor* m_Actor {nullptr};
+
+protected:
+    void SetActor(GameActor* actor) { m_Actor = actor; }
+    GameActor* GetActor() { return m_Actor; }
+};
+
+class EmptyCommand : public ActorCommand
 {
 public:
-    virtual void Execute(GameActor& actor)
+    void Execute() override
     {
         std::cout << "Empty command pressed" << std::endl;
     }
+
+    void Undo() override
+    {
+        std::cout << "Empty command undo pressed" << std::endl;
+	}
 };
 
-class JumpCommand : public Command
-{
+class JumpCommand : public ActorCommand
+{    
 public:
-    virtual void Execute(GameActor& actor) override
+    void Execute() override
     { 
-        actor.Jump();
+        if (GameActor* actor =  GetActor())
+        {
+            actor->Jump();
+        }
+    }
+
+    void Undo() override
+    {
+        std::cout << "JumpCommand undo pressed" << std::endl;
     }
 };
 
-class FireCommand : public Command
+class FireCommand : public ActorCommand
 {
 public:
-    virtual void Execute(GameActor& actor) override
-    { 
-        actor.FireGun();
+    void Execute() override
+    {
+        if (GameActor* actor =  GetActor())
+        {
+            actor->FireGun();
+        }
     }
+
+    void Undo() override
+    {
+        std::cout << "FireCommand undo pressed" << std::endl;
+	}
 };
 
-class MoveActorCommand : public Command
+class MoveActorCommand : public ActorCommand
 {
 public:
     MoveActorCommand(GameActor* actor, int x, int y)
-        : m_Actor(actor), m_X(x), m_Y(y)
+        :  m_X(x), m_Y(y)
     {
+        SetActor(actor);
     }
 
-    virtual void Execute(GameActor& actor) override
+    void Execute() override
     {
-        m_Actor->SetX(m_X);
-        m_Actor->SetY(m_Y);
+        if (GameActor* actor =  GetActor())
+        {
+            m_BeforeX = actor->GetX();
+            m_BeforeY = actor->GetY();
+            actor->MoveTo(m_X, m_Y);
+        }
+        std::cout << "New Actor location is " << m_X << ", " << m_Y << std::endl;
+    }
+
+    void Undo() override
+    {
+        if (GameActor* actor =  GetActor())
+        {
+            actor->MoveTo(m_BeforeX, m_BeforeY);
+        }
         std::cout << "New Actor location is " << m_X << ", " << m_Y << std::endl;
     }
     
 private:
-    GameActor* m_Actor {nullptr};
     int m_X {0};
     int m_Y {0};
+    int m_BeforeX {0};
+    int m_BeforeY {0};
 };
 

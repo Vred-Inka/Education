@@ -10,6 +10,7 @@ public:
 
     void Jump() { std::cout << "Jump pressed" << std::endl; }
     void FireGun() { std::cout << "FireGun pressed" << std::endl; }
+    void MoveTo(int x, int y){m_X = x; m_Y = y;}
 
     int GetX(){return m_X;}
     int GetY(){return m_Y;}

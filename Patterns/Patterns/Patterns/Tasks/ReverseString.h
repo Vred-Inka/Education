@@ -17,4 +17,4 @@ namespace ReverseString
         std::cout << s << " " << s1 << std::endl;
     }
     
-};
+}

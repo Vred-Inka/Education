@@ -91,12 +91,13 @@ typedef std::vector<vector<int>> Grid;
     };
     */
 
-    
-    static vector<pair<int, int>> directions = {
+   /* 
+    vector<pair<int, int>> directions = {
                {0,1},
         {1, 0},      {0, -1},
                 {-1, 0}
     };
+    */
 
 
     static bool preCheck(Grid& grid, Point source,  Point dest)
@@ -130,6 +131,12 @@ typedef std::vector<vector<int>> Grid;
     
     static void aStarSearch(Grid& grid, Point source,  Point dest)
     {
+        vector<pair<int, int>> directions = {
+            {0,1},
+     {1, 0},      {0, -1},
+             {-1, 0}
+        };
+        
         if (!preCheck(grid, source, dest))
         {
             return;

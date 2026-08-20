@@ -18,17 +18,17 @@ int main(int argc, char* argv[])
 {
     //Algorytms    
     //int i = aSearch::pathSearchAStar();
-    AABB::Test();
+    //AABB::Test();
 
     // Design Patterns
-    //CommandPattern::Test();
+    CommandPattern::Test();
     
     // Tasks
-    InventoryTest::Test();
-    ReverseString::Test();
+    //InventoryTest::Test();
+    //ReverseString::Test();
 
     //Tools
-    MemorySizeTest::Test();
+   // MemorySizeTest::Test();
 
 
    
