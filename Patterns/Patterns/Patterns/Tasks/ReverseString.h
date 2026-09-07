@@ -9,7 +9,7 @@ namespace ReverseString
         std::string s = "s123e";
         std::string s1;
 
-        for (int i = s.length() - 1; i>=0; i--)
+        for (int i = (int)s.length() - 1; i>=0; i--)
         {
             s1+=s[i];
         }

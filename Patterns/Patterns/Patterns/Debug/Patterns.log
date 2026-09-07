@@ -1,0 +1,13 @@
+﻿  A_Search.cpp
+  Buffer.cpp
+  Factory.cpp
+  Parser.cpp
+  MemoryDebug.cpp
+  Tree.cpp
+  Observer.cpp
+  Patterns.cpp
+E:\Education\Patterns\Patterns\Patterns\Tools\MemoryTest.cpp(191,33): error C2338: static_assert failed: 'Only 64-bit platform supported'
+  (compiling source file 'Patterns.cpp')
+  
+  Log.cpp
+  Generating Code...

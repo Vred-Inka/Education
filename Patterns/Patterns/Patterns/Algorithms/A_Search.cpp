@@ -9,6 +9,8 @@ using namespace std;
 
 namespace aSearch
 {
+
+    /*
 #define ROW 2
 #define COL 4    
 typedef std::pair<int, int> Point;
@@ -52,11 +54,11 @@ typedef std::vector<vector<int>> Grid;
        return (double)sqrt(row - dest.first) * (row - dest.first) + (col - dest.second) * (col - dest.second);
     }
 
-    static int manhattanDistance(int x1, int y1, int x2, int y2) {
+    int manhattanDistance(int x1, int y1, int x2, int y2) {
         return abs(x1 - x2) + abs(y1 - y2);
     }
 
-    static void tracePath(Cell cellDetails[][COL], const Point& dest) // Cell array?
+    void tracePath(Cell cellDetails[][COL], const Point& dest) // Cell array?
     {
         printf("\nThe Path is ");
         int row = dest.first;
@@ -84,23 +86,22 @@ typedef std::vector<vector<int>> Grid;
         return;
     }
    
-   /* static vector<pair<int, int>> directions = {
+    vector<pair<int, int>> directions = {
         {-1,-1},{0,-1} ,{1,-1},
         {-1, 0},           {1, 0},
         {-1, 1},{0, 1}, {1, 1}
     };
-    */
+   
 
-   /* 
     vector<pair<int, int>> directions = {
                {0,1},
         {1, 0},      {0, -1},
                 {-1, 0}
     };
-    */
+ 
 
 
-    static bool preCheck(Grid& grid, Point source,  Point dest)
+    bool preCheck(Grid& grid, Point source,  Point dest)
     {
         if (!isValid(source))
         {
@@ -129,7 +130,7 @@ typedef std::vector<vector<int>> Grid;
         return true;
     }
     
-    static void aStarSearch(Grid& grid, Point source,  Point dest)
+    void aStarSearch(Grid& grid, Point source,  Point dest)
     {
         vector<pair<int, int>> directions = {
             {0,1},
@@ -231,7 +232,7 @@ typedef std::vector<vector<int>> Grid;
         return;     
     }
     
-    static int pathSearchAStar()
+    int pathSearchAStar()
     {
         vector<vector<int>> grid = {
          {0,2,0,1},
@@ -246,17 +247,21 @@ typedef std::vector<vector<int>> Grid;
         // Call solution and handle output
         return 0;
     }
+
+
+ 
+    Input:
+    grid = [[0,2,0,1],[0,0,2,0]], start = [0,1], goal = [3,1]
+
+    Output:
+    [6,[[0,1],[1,1],[2,1],[3,1]],[[0,1],[1,1],[2,1],[3,1]]]
+    */
+
+
 }//namespace aSEarch
 
  
 
-/*
-Input:
-grid = [[0,2,0,1],[0,0,2,0]], start = [0,1], goal = [3,1]
-›
-Output:
-[6,[[0,1],[1,1],[2,1],[3,1]],[[0,1],[1,1],[2,1],[3,1]]]
-*/
 
 
 
